@@ -3,12 +3,12 @@ import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 
 export const createUser = async (req, res) => {
-    const { name, username, email, password } = req.body;
+    const {  username, email, password } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-        name, username, email, password: hashedPassword,
+         username, email, password: hashedPassword,
     });
 
     res.status(201).json(user);
