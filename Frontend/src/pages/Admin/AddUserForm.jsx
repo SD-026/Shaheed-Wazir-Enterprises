@@ -27,7 +27,7 @@ const AddUserForm = () => {
 
     try {
       
-     const res=axios.post('http://localhost:5000/api/auth/createAdmin',formData)
+     const res=axios.post('https://shaheed-wazir-enterprises.onrender.com/api/auth/createAdmin',formData)
 
      
 if(res.success){

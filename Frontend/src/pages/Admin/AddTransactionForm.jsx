@@ -32,7 +32,7 @@ const AddTransactionForm = () => {
 
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/customers/')
+        const response = await axios.get('https://shaheed-wazir-enterprises.onrender.com/api/customers/')
         setCustomers(response.data.customers);
         setFilteredCustomers(response.data.customers);
       } catch (error) {
@@ -58,7 +58,7 @@ const AddTransactionForm = () => {
   // useEffect(() => {
   //   const fetchTransactions = async () => {
   //     try {
-  //       const response = await fetch('http://localhost:5000/api/transactions?limit=5');
+  //       const response = await fetch('https://shaheed-wazir-enterprises.onrender.com/api/transactions?limit=5');
   //       const data = await response.json();
   //       setTransactions(data);
   //     } catch (error) {
@@ -174,7 +174,7 @@ const AddTransactionForm = () => {
 
 
 
-        const response = await axios.post('http://localhost:5000/api/transactions/addTransaction',formPayload)
+        const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/transactions/addTransaction',formPayload)
         if(response.data.success){
       toast.success('Transaction added successfully!');
       navigate('/TransactionManagement');}
