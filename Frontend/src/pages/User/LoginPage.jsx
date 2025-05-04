@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import logo from '../../assets/logo-removebg-preview.png'
 
-const LoginPage = () => {
+export default function LoginPage (){
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -151,4 +151,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+// export default LoginPage;
