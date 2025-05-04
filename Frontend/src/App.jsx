@@ -29,7 +29,9 @@ function App() {
         
         <LandingPage /></Navbar>} />
       <Route path="/login" element={<LoginPage />} />
-      {/* <Route path="/contactus" element={<Navbar><ContactUs /></Navbar>} /> */}
+      {/* <Route path="/contactus" element={<Navbar><ContactUs /></Navbar>} />
+      
+      */}
       <Route path="/aboutus" element={<Navbar><AboutUs /></Navbar>} />
       <Route path="/products" element={<Navbar><CottonProductsPage /></Navbar>} />
 
