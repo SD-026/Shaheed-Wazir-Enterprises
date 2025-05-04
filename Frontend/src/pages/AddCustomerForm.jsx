@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiSave, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import SidebarWithNavbar from '../components/Sidebar';
+// import SidebarWithNavbar from '../components/Sidebar';
 
 const AddCustomerForm = () => {
   const navigate = useNavigate();
