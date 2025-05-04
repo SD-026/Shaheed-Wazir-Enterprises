@@ -12,7 +12,7 @@ import UserManager from './pages/Admin/UserManager';
 import TransactionTrash from './pages/Admin/TransactionTrash';
 import AdminViewProfile from './pages/Admin/AdminViewProfile';
 import AddUserForm from './pages/Admin/AddUserForm';
-import ContactUs from './pages/Contactus';
+// import ContactUs from './pages/Contactus';
 import AboutUs from './pages/AboutUs';
 import ProtectedRoute from './pages/components/ProtectedRoute';
 import Navbar from './pages/components/Navbar';
