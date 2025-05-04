@@ -30,14 +30,16 @@ const AddCustomerForm = () => {
 
     try {
       const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/customers/addCustomer',formData)
-    console.log(response)
+    // console.log(response)
 
-      if (response.success) {
+      if (response.data.success) {
         
         toast.success('Customer added successfully!');
       navigate('/CustomerManagement');
       }
-      
+      else{
+        toast.info(response.data.message);
+      }
       
      
 
