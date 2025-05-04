@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   const handleDeleteClick = async (userId) => {
     try {
-     const res= await axios.delete(`https://shaheed-wazir-enterprises.onrender.com/api/users/${userId}`);
+     const res= await axios.delete(`http://localhost:5000/api/users/${userId}`);
 
       
       if(res.data.success){
@@ -99,8 +99,8 @@ const Dashboard = () => {
 
   return (
     <>
-    <div className='flex justify-center my-10 bg-yellow-200 '><SidebarWithNavbar/>
-    <div className="p-6 w-full  min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className='flex'>
+    <div className="my-12 p-6 w-full min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl overflow-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">

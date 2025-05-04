@@ -21,7 +21,7 @@ export const addCustomer = async (req, res) => {
     // Check if customer already exists
     const existingCustomer = await Customer.findOne({ email });
     if (existingCustomer) {
-      return res.status(400).json({success:false, message: 'Customer with this email already exists' });
+      return res.status(500).json({success:false, message: 'Customer with this email already exists' });
     }
 
     // Create new customer
@@ -38,7 +38,8 @@ export const addCustomer = async (req, res) => {
     const savedCustomer = await newCustomer.save();
 
     // Return success response
-    res.status(201).json({
+    res.status(200).json({
+
       message: 'Customer added successfully',
       customer: savedCustomer,
       success:true

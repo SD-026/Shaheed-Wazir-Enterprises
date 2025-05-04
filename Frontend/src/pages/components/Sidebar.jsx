@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo-removebg-preview.png';
 
-const SidebarWithNavbar = () => {
+const SidebarWithNavbar = ({children}) => {
   const navigate=useNavigate()
   const [isOpen, setIsOpen] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -169,33 +169,35 @@ const SidebarWithNavbar = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#0A198F] to-[#112200] text-white shadow-lg h-16 flex items-center px-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white text-white shadow-xs h-16 flex items-center px-4">
         {/* Mobile menu button */}
         <button 
           onClick={toggleSidebar}
-          className="p-2 rounded-md text-white lg:hidden mr-2"
+          className="p-2 rounded-md text-black bg-gray-50 shadow-2xl lg:hidden mr-2"
         >
           {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
 
         {/* Logo/Brand */}
-        <div className="flex items-center justify-center-safe"
+        <div className="flex   max-sm:w-full "
         onClick={()=>{
           navigate('/')
         }}>
-          <img InfiniteRotatingLogo
+          <img 
+          
           src={logo}
           alt="MUET Logo"
-          className="size-30 object-contain drop-shadow-2xs drop-shadow-white rounded-full"
+          className="w-30 h-24 object-contain  drop-shadow-2xs drop-shadow-white rounded-full"
         />
            
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold bg-gradient-to-r from-cyan-100 to-blue-300 bg-clip-text text-transparent"
+          {/* <motion.div 
+            // whileHover={{ scale: 1.05 }}
+            className="text-lg flex justify-center items-center  max-md:hidden font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent"
           >
             
+            
             Shaheed Wazir Enterprises
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Search Bar - Desktop */}
@@ -214,66 +216,70 @@ const SidebarWithNavbar = () => {
         <div className="ml-auto  flex items-center" ref={profileRef}>
           <button 
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-            className="flex items-center space-x-2 focus:outline-none"
+            className="flex items-center focus:outline-none"
           >
             <div className="relative">
             <img
                       src={user?.profilePic || "https://ui-avatars.com/api/?name=" + encodeURIComponent(user.username) + "&background=random"}
                       alt="Profile"
-                      className="h-10 w-10 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center"
+                      className="size-10 rounded-full flex items-center justify-center"
                     />
               <div className="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full border-2 border-[#0A192F]"></div>
             </div>
             <div className="hidden lg:block text-left">
               <p className="text-sm font-medium">{user?.username}</p>
-              <p className="text-xs text-blue-300">{user?.role}</p>
+              <p className="text-sm font-bold text-blue-600"> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
             </div>
             <FiChevronDown className={`hidden lg:block transition-transform ${profileDropdownOpen ? 'transform rotate-180' : ''}`} />
           </button>
 
           {/* Profile Dropdown Menu */}
           <AnimatePresence>
-            {profileDropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute right-4 top-16 mt-2 w-56 origin-top-right bg-[#0A192F] rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
-              >
-                <div className="py-1">
-                  <a
-                     onClick={()=>{
-                      navigate('/Profile')
-                    }}
-                    className="flex items-center px-4 py-2 text-sm text-white hover:bg-[#112240] "
-                  >
-                    <FiUser className="mr-3" />
-                    View Profile
-                  </a>
-                  {/* <a
-                    href="#"
-                    className="flex items-center px-4 py-2 text-sm text-white hover:bg-[#112240]"
-                  >
-                    <FiSettings className="mr-3" />
-                    Settings
-                  </a> */}
-                  <div className="border-t border-[#112240]"></div>
-                  <a
-                    onClick={()=>{
-                      localStorage.clear()
-                      navigate('/')
-                      window.location.reload()
-                    }}
-                    className="flex items-center px-4 py-2 text-sm text-red-400 hover:bg-[#112240]"
-                  >
-                    <FiLogOut className="mr-3" />
-                    Logout
-                  </a>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                    {profileDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute right-4 top-20 mt-2 w-56 origin-top-right bg-white rounded-lg shadow-lg ring-1 ring-gray-200 focus:outline-none z-50"
+                      >
+                        <div className="py-1">
+                          <a
+                            onClick={() => {
+                              navigate('/Profile');
+                              setProfileDropdownOpen(false);
+                            }}
+                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            <FiUser className="mr-3" />
+                            View Profile
+                          </a>
+                          <a
+                            onClick={() => {
+                              user?.role === 'admin' ? navigate('/Dashboard') : navigate('/UserDashboard');
+                              setProfileDropdownOpen(false);
+                            }}
+                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            <FiSettings className="mr-3" />
+                            Dashboard
+                          </a>
+                          <div className="border-t border-gray-200"></div>
+                          <a
+                            onClick={() => {
+                              localStorage.clear();
+                              navigate('/');
+                              window.location.reload();
+                            }}
+                            className="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                          >
+                            <FiLogOut className="mr-3" />
+                            Logout
+                          </a>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
         </div>
       </nav>
 
@@ -293,19 +299,19 @@ const SidebarWithNavbar = () => {
       <motion.div
         initial={{ width: "16rem" }}
         animate={{ width: isOpen ? "16rem" : "5rem" }}
-        className="hidden lg:block fixed top-16 left-0 bottom-0 z-40 bg-gradient-to-b from-[#0A192F] to-[#112240] text-white shadow-xl"
+        className="hidden lg:block fixed top-16 left-0 bottom-0 overflow-hidden z-40  bg-white  text-black shadow-xs"
       >
         <div className="flex flex-col h-full w-full">
           {/* Collapse button */}
-          <div className="flex justify-end p-3">
+          <div className="flex justify-end p-3 ">
             <button 
               onClick={toggleSidebar}
-              className="p-2 rounded-full bg-[#112240] hover:bg-[#0a1a36] transition-colors"
+              className="p-2 rounded-full mt-2  hover:bg-blue-300 transition-colors"
             >
               {isOpen ? (
-                <FiChevronDown className="text-white transform rotate-90" />
+                <FiChevronDown className="text-black transform rotate-90" />
               ) : (
-                <FiChevronRight className="text-white transform rotate-90" />
+                <FiChevronRight className="text-black transform rotate-90" />
               )}
             </button>
           </div>
@@ -326,7 +332,7 @@ const SidebarWithNavbar = () => {
                         }else{
                         navigate(`/${item.link}`)}
                       }}
-                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#112240] transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
+                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-blue-100' : ''}`}
                     >
                       <div className="flex items-center space-x-3">
                         <span>{item.icon}</span>
@@ -354,7 +360,7 @@ const SidebarWithNavbar = () => {
                           <li key={subIndex}>
                             <a
                               // href={subItem.link}
-                              className="block p-2 rounded-lg hover:bg-[#0a1a36] transition-colors text-sm"
+                              className="block p-2 rounded-lg hover:bg-blue-200 transition-colors text-sm"
                               onClick={()=>{
                                 
                                 navigate(`/${subItem.link}`)}
@@ -385,7 +391,7 @@ const SidebarWithNavbar = () => {
                         else{
                         navigate(`/${item.link}`)}
                       }}
-                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#112240] transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
+                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
                     >
                       <div className="flex items-center space-x-3">
                         <span>{item.icon}</span>
@@ -417,7 +423,7 @@ const SidebarWithNavbar = () => {
                                 
                                   navigate(`/${subItem.link}`)}
                               }
-                              className="block p-2 rounded-lg hover:bg-[#0a1a36] transition-colors text-sm"
+                              className="block p-2 rounded-lg hover:bg-blue-200 transition-colors text-sm"
                             >
                               {subItem.name}
                             </a>
@@ -442,7 +448,7 @@ const SidebarWithNavbar = () => {
                     />
                 <div>
                   <p className="font-medium">{user?.username}</p>
-                  <p className="text-xs text-[#64FFDA]"> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+                  <p className="text-sm font-bold text-blue-600"> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
                 </div>
               </div>
             ) : (
@@ -467,7 +473,7 @@ const SidebarWithNavbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-gray-50 bg-opacity-15 z-30 lg:hidden"
+              className="fixed inset-0  bg-opacity-15 z-30 lg:hidden"
               style={{ top: '4rem' }}
             />
             <motion.div
@@ -475,7 +481,7 @@ const SidebarWithNavbar = () => {
               animate={{ x: 0 }}
               exit={{ x: -300 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-16 left-0 bottom-0 w-64 z-40 bg-gradient-to-b from-[#0A192F] to-[#112240] text-white shadow-xl lg:hidden"
+              className="fixed top-16 left-0 bottom-0 w-64 z-40 bg-white text-black shadow-xl lg:hidden"
             >
               <div className="flex flex-col h-full">
               <nav className="flex-1 overflow-y-auto px-3 py-4">
@@ -498,7 +504,7 @@ const SidebarWithNavbar = () => {
                              
                               }
                             }}
-                            className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#112240] transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
+                            className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-blue-100' : ''}`}
                           >
                             <div className="flex items-center space-x-3">
                               <span>{item.icon}</span>
@@ -521,7 +527,7 @@ const SidebarWithNavbar = () => {
                                 <li key={subIndex}>
                                   <a
                                     href={subItem.link}
-                                    className="block p-2 rounded-lg hover:bg-[#0a1a36] transition-colors text-sm"
+                                    className="block p-2 rounded-lg hover:bg-blue-200 transition-colors text-sm"
                                   >
                                     {subItem.name}
                                   </a>
@@ -553,7 +559,7 @@ const SidebarWithNavbar = () => {
                            
                             }
                             }}
-                            className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#112240] transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
+                            className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-blue-100' : ''}`}
                           >
                             <div className="flex items-center space-x-3">
                               <span>{item.icon}</span>
@@ -576,7 +582,7 @@ const SidebarWithNavbar = () => {
                                   <li key={subIndex}>
                                     <a
                                       // href={subItem.link}
-                                      className="block p-2 rounded-lg hover:bg-[#0a1a36] transition-colors text-sm"
+                                      className="block p-2 rounded-lg hover:bg-blue-200 transition-colors text-sm"
                                     onclick={()=>{
                                       navigate(`/${subItem.link}`)
 
@@ -608,7 +614,7 @@ const SidebarWithNavbar = () => {
                     />
                     <div>
                       <p className="font-medium">{user.username}</p>
-                      <p className="text-xs text-[#64FFDA]"> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+                      <p className="text-sm font-bold text-blue-600"> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
                     </div>
                   </div>
                 </div>
@@ -621,9 +627,11 @@ const SidebarWithNavbar = () => {
       {/* Main content area */}
       <div 
         className={`transition-all duration-300 min-h-screen ${isOpen ? 'lg:pl-64' : 'lg:pl-20'}`}
-        style={{ paddingTop: '6rem' }} /* Compensate for navbar + mobile search height */
+        style={{ }} /* Compensate for navbar + mobile search height */
       >
-        {/* Your main content goes here */}
+        {
+          children
+        }
       </div>
     </div>
   );

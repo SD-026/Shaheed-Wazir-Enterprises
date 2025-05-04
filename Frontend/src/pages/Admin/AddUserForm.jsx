@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { FiUser, FiMail, FiLock, FiChevronDown } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import SidebarWithNavbar from '../components/Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const AddUserForm = () => {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,36 +26,36 @@ const AddUserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+  
     try {
-      
-     const res=axios.post('https://shaheed-wazir-enterprises.onrender.com/api/auth/createAdmin',formData)
+      const res = await axios.post('http://localhost:5000/api/auth/createAdmin', formData);
+  
+      if (res.data.success) {
+        toast.success('User created successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          password: '',
+          role: ''
+        });
+        navigate('/Userdashboard')
 
-     
-if(res.success){
-      toast.success('User created successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        password: '',
-        role: ''
-      });}
-      else{
-      toast.success(res.message);
+      } else {
+        toast.error(res.data.message || 'User creation failed');
       }
-
     } catch (error) {
-      toast.error(error.message || 'Error creating user');
+      toast.error(error.response?.data?.message || error.message || 'Error creating user');
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
-    <div className='flex w-full'>
-        <SidebarWithNavbar/>
+    <div className=''>
+        
     
-    <div className="min-h-screen w-full  bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full  bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Add User</h2>
         

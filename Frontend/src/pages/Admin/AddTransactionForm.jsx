@@ -32,7 +32,7 @@ const AddTransactionForm = () => {
 
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get('https://shaheed-wazir-enterprises.onrender.com/api/customers/')
+        const response = await axios.get('http://localhost:5000/api/customers/')
         setCustomers(response.data.customers);
         setFilteredCustomers(response.data.customers);
       } catch (error) {
@@ -58,7 +58,7 @@ const AddTransactionForm = () => {
   // useEffect(() => {
   //   const fetchTransactions = async () => {
   //     try {
-  //       const response = await fetch('https://shaheed-wazir-enterprises.onrender.com/api/transactions?limit=5');
+  //       const response = await fetch('http://localhost:5000/api/transactions?limit=5');
   //       const data = await response.json();
   //       setTransactions(data);
   //     } catch (error) {
@@ -82,11 +82,20 @@ const AddTransactionForm = () => {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
+    const file = files[0];
+  
+    if (file && file.name.toLowerCase().endsWith('.zip')) {
+      alert("ZIP files are not allowed.");
+      e.target.value = ''; // Clear the file input
+      return;
+    }
+  
     setFormData(prev => ({
       ...prev,
-      [name]: files[0]
+      [name]: file
     }));
   };
+  
 
   // const handleFileChange = (e) => {
   // const file = e.target.files[0];
@@ -174,7 +183,7 @@ const AddTransactionForm = () => {
 
 
 
-        const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/transactions/addTransaction',formPayload)
+        const response = await axios.post('http://localhost:5000/api/transactions/addTransaction',formPayload)
         if(response.data.success){
       toast.success('Transaction added successfully!');
       navigate('/TransactionManagement');}
@@ -191,7 +200,7 @@ const AddTransactionForm = () => {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Add Transaction</h1>
           <button
-            onClick={() => navigate('/transactions')}
+            onClick={() => navigate('/TransactionManagement')}
             className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800"
           >
             <FiX /> Cancel
@@ -366,7 +375,7 @@ const AddTransactionForm = () => {
     name="attachment"
     onChange={handleFileChange}
     className="hidden"
-    accept=".png,.pdf,image/png,application/pdf"  // This restricts to PNG and PDF
+    // accept=".png,.pdf,image/png,application/pdf"  // This restricts to PNG and PDF
   />
   <label
     htmlFor="attachment"
@@ -388,7 +397,7 @@ const AddTransactionForm = () => {
       name="invoice"
       onChange={handleFileChange}
       className="hidden"
-      accept=".png,.pdf,image/png,application/pdf"  // Restrict to PNG and PDF
+      // accept=".png,.pdf,image/png,application/pdf"  // Restrict to PNG and PDF
     />
     <label
       htmlFor="invoice"
@@ -400,9 +409,9 @@ const AddTransactionForm = () => {
       {formData.invoice ? formData.invoice.name : 'No file chosen'}
     </span>
   </div>
-  {formData.invoice && !['image/png', 'application/pdf'].includes(formData.invoice.type) && (
+  {/* {formData.invoice && !['image/png', 'application/pdf'].includes(formData.invoice.type) && (
     <p className="mt-1 text-sm text-red-600">Please select a PNG or PDF file only</p>
-  )}
+  )} */}
 </div>
             </div>
 

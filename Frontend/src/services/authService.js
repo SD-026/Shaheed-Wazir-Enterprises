@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'https://shaheed-wazir-enterprises.onrender.com/api/auth';
+const API = 'http://localhost:5000/api/auth';
 
 export const login = async (credentials) => {
   

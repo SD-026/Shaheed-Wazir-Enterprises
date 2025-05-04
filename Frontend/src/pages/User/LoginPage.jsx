@@ -52,7 +52,7 @@ const LoginPage = () => {
           <motion.img 
             src={logo}
             alt="Company Logo"
-            className="h-16"
+            className="h-24"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           />
@@ -145,14 +145,7 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="text-center text-xs text-gray-500 mt-6"
-        >
-          © {new Date().getFullYear()} Your Company. All rights reserved.
-        </motion.div>
+       
       </motion.div>
     </div>
   );

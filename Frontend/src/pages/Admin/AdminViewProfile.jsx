@@ -28,7 +28,7 @@ const AdminViewProfile = () => {
     // Fetch admin data
     const fetchAdminData = async () => {
       try {
-        const response = await axios.get(`https://shaheed-wazir-enterprises.onrender.com/api/auth/getprofile/${user._id}`);
+        const response = await axios.get(`http://localhost:5000/api/auth/getprofile/${user._id}`);
         setAdminData(response.data);
       
         setLoading(false);
@@ -76,7 +76,7 @@ const AdminViewProfile = () => {
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden mt-10">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+      {/* <Sidebar isOpen={sidebarOpen} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} /> */}
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">

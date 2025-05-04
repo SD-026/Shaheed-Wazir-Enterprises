@@ -48,7 +48,7 @@ const UserDashboard = () => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get('https://shaheed-wazir-enterprises.onrender.com/api/customers/')
+        const res = await axios.get('http://localhost:5000/api/customers/')
         setUsers(res.data.customers);
         setFilteredUsers(res.data.customers);
       } catch (error) {
@@ -64,7 +64,7 @@ const UserDashboard = () => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get('https://shaheed-wazir-enterprises.onrender.com/api/transactions/gettotal')
+        const res = await axios.get('http://localhost:5000/api/transactions/gettotal')
         console.log(res)
         settotalCredits(res.data.totalCredit);
         settotalDebit(res.data.totalDebit)
@@ -105,7 +105,7 @@ const UserDashboard = () => {
 
   const handleDeleteClick = async (userId) => {
     try {
-      const res = await axios.delete(`https://shaheed-wazir-enterprises.onrender.com/api/customers/deleteCustomerController/${userId}`);
+      const res = await axios.delete(`http://localhost:5000/api/customers/deleteCustomerController/${userId}`);
 
       
       if(res.data.success){
@@ -131,7 +131,7 @@ const UserDashboard = () => {
   return (
     <>
       <div className='flex'>
-        <SidebarWithNavbar/>
+        {/* <SidebarWithNavbar/> */}
         <div className="my-12 p-6 w-full min-h-screen bg-gray-50">
           <div className="max-w-7xl mx-auto">
             {/* Summary Cards */}
@@ -146,7 +146,7 @@ const UserDashboard = () => {
               </div>
               <div className="bg-white p-6 rounded-lg shadow">
                 <h3 className="text-gray-500 text-sm font-medium">Total Balance</h3>
-                <p className={`text-2xl font-bold ${totalBalance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                <p className={`text-2xl font-bold ${totalBalance >= 0 ? 'text-cyan-500' : 'text-orange-500'}`}>
                   {formatCurrency(totalBalance)}
                 </p>
               </div>

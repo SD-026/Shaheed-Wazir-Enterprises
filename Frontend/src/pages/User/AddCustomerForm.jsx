@@ -29,27 +29,30 @@ const AddCustomerForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/customers/addCustomer',formData)
-    
+      const response = await axios.post('http://localhost:5000/api/customers/addCustomer',formData)
+    console.log(response)
 
-      if (response.data.success) {
+      if (response.success) {
         
         toast.success('Customer added successfully!');
       navigate('/CustomerManagement');
       }
-      // throw new Error('Failed to add customer');
+      
+      
+     
 
     
       
     } catch (error) {
       toast.error(error.message || 'Error adding customer');
+      toast.error(error.message);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className='flex mx-auto my-auto  w-full  flex-1  '><SidebarWithNavbar/>
+    <div className=' '>
     <div className="p-6 w-full bg-gray-50 my-16">
       <div className="max-w-3xl mx-auto  ">
         <div className="flex justify-between items-center mb-6">
