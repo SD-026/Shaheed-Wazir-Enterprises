@@ -301,14 +301,14 @@ const CustomerTransactions = () => {
           <div className="flex space-x-2">
             <button
               onClick={exportToExcel}
-              className="flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
+              className="flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm max-md:px-3 max-md:py-1 max-md:text-xs "
             >
               <FiDownload className="mr-2" />
               Export Excel
             </button>
             <button
               onClick={exportToPDF}
-              className="flex items-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
+              className="flex items-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm max-md:px-3 max-md:py-1 max-md:text-xs "
             >
               <FiDownload className="mr-2" />
               Export PDF
