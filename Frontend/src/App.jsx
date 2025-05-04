@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/User/LoginPage';
+import LoginPage from './pages/user/LoginPage';
 import Dashboard from './pages/Admin/Dashboard';
-import UserDashboard from './pages/User/Userdashboard';
+import UserDashboard from './pages/user/UserDashboard';
 import CustomerManagement from './pages/Admin/CustomerManagement';
-import AddCustomerForm from './pages/User/AddCustomerForm';
+import AddCustomerForm from './pages/user/AddCustomerForm';
 import TransactionManagement from './pages/Admin/TransactionManagement';
 import AddTransactionForm from './pages/Admin/AddTransactionForm';
 import CustomerTransactions from './pages/Admin/CustomerTransactions';
@@ -19,7 +19,7 @@ import Navbar from './pages/components/Navbar';
 import EditUserPage from './pages/Admin/EditUserPage';
 import SidebarWithNavbar from './pages/components/Sidebar';
 import CottonProductsPage from './pages/components/ProductPage';
-// import UserDashboard from './pages/User/UserDashboard';
+
 
 function App() {
   return (
