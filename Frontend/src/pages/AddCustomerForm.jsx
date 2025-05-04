@@ -47,6 +47,7 @@ const AddCustomerForm = () => {
       
     } catch (error) {
       toast.error(error.message || 'Error adding customer');
+      
       toast.error(error.message);
     } finally {
       setIsSubmitting(false);
