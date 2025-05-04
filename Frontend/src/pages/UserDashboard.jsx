@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../services/authService';
-import { getAllUsers } from '../../services/userService';
+// import { deleteUser } from '../../services/authService';
+// import { getAllUsers } from '../services/userService';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiTrash2, FiPlus, FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 // import SidebarWithNavbar from '../components/Sidebar';
