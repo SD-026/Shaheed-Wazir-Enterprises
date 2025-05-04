@@ -1003,7 +1003,7 @@ const Navbar = ({ children }) => {
           )}
         </AnimatePresence>
       </nav>
-      <div className="pt-24">
+      <div className="pt-12">
         {children}
       </div>
     </>
