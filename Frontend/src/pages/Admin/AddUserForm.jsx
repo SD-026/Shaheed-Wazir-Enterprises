@@ -55,7 +55,7 @@ const AddUserForm = () => {
     <div className=''>
         
     
-    <div className="min-h-screen w-full  bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full max-md:mt-6  bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Add User</h2>
         

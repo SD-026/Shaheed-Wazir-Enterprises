@@ -288,7 +288,7 @@ const CustomerTransactions = () => {
   }
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6 my-12  bg-gray-50 min-h-screen">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-start mb-4">
           <button

@@ -11,44 +11,55 @@ import Customer from '../models/Customer.js';
 // Add new customer
 export const addCustomer = async (req, res) => {
   try {
-    // Validate input
     const { name, email, phone, address, reference } = req.body;
-    
+
+    // Basic validation
     if (!name || !email) {
-      return res.status(400).json({ message: 'Name and email are required' });
+      return res.status(400).json({
+        success: false,
+        message: 'Name and email are required',
+      });
     }
 
+    const normalizedEmail = email.toLowerCase();
+
     // Check if customer already exists
-    const existingCustomer = await Customer.findOne({ email });
+    const existingCustomer = await Customer.findOne({ email: normalizedEmail });
     if (existingCustomer) {
-      return res.status(400).json({success:false, message: 'Customer with this email already exists' });
+      return res.status(400).json({
+        success: false,
+        message: 'Customer with this email already exists',
+      });
     }
 
     // Create new customer
     const newCustomer = new Customer({
       name,
-      email,
+      email: normalizedEmail,
       phone: phone || '',
       address: address || '',
       reference: reference || '',
-      balance: 0 // Initialize balance to 0
+      balance: 0,
     });
 
-    // Save to database
     const savedCustomer = await newCustomer.save();
 
-    // Return success response
-    res.status(201).json({
-
+    return res.status(201).json({
+      success: true,
       message: 'Customer added successfully',
       customer: savedCustomer,
-      success:true
     });
+
   } catch (error) {
     console.error('Error adding customer:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: error.message,
+    });
   }
-}
+};
+
 
 
 

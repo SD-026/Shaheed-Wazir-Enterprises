@@ -27,32 +27,27 @@ const AddCustomerForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+  
     try {
-      const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/customers/addCustomer',formData)
-    // console.log(response)
-
+      const response = await axios.post(
+        'https://shaheed-wazir-enterprises.onrender.com/api/customers/addCustomer',
+        formData
+      );
+  
       if (response.data.success) {
-        
         toast.success('Customer added successfully!');
-      navigate('/CustomerManagement');
+        navigate('/CustomerManagement');
+      } else {
+        toast.info(response.data.message || 'Something went wrong');
       }
-      else{
-        toast.info(response.data.message);
-      }
-      
-     
-
-    
-      
     } catch (error) {
-      toast.error(error.message || 'Error adding customer');
-      
-      toast.error(error.message);
+      const errorMessage = error.response?.data?.message || error.message || 'Error adding customer';
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className=' '>
