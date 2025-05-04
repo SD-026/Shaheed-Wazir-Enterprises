@@ -702,7 +702,7 @@ const Navbar = ({ children }) => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center  group">
-              <div className="h-24 w-28 md:h-24 md:w-32">
+              <div className="h-20 w-20 md:h-24 md:w-32">
                 <img
                   src={logo}
                   alt="Company Logo"
