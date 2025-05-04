@@ -47,12 +47,12 @@ export const createAdmin = async (req, res) => {
       return res.status(400).json({ success: false, message: 'User already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
       email,
       username: name,
-      password: hashedPassword,
+      password:password ,
       role
     });
 
