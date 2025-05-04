@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../services/authService';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
-import logo from '../../assets/logo-removebg-preview.png'
+import logo from '../assets/logo-removebg-preview.png'
 
 export default function LoginPage (){
   const [email, setUsername] = useState('');
