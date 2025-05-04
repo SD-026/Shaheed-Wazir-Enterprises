@@ -293,7 +293,7 @@ const CustomerTransactions = () => {
         <div className="flex justify-between items-start mb-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center text-blue-600 hover:text-blue-800"
+            className="flex items-center text-sm  max-md:text-x  text-blue-600 hover:text-blue-800"
           >
             <FiChevronLeft className="mr-1" /> Back to Customers
           </button>

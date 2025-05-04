@@ -706,7 +706,7 @@ const Navbar = ({ children }) => {
                 <img
                   src={logo}
                   alt="Company Logo"
-                  className="size-full object-cover"
+                  className="size-full object-contain"
                 />
               </div>
             </Link>
