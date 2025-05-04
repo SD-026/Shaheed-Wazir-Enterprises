@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
-import LoginPage from '../src/pages/user/LoginPage';
+import LoginPage from '../src/pages/user/LoginPage.jsx';
 import Dashboard from './pages/Admin/Dashboard';
-import UserDashboard from '../src/pages/user/UserDashboard';
+import UserDashboard from '../src/pages/user/UserDashboard.jsx';
 import CustomerManagement from './pages/Admin/CustomerManagement';
-import AddCustomerForm from '../src/pages/user/AddCustomerForm';
+import AddCustomerForm from '../src/pages/user/AddCustomerForm.jsx';
 import TransactionManagement from './pages/Admin/TransactionManagement';
 import AddTransactionForm from './pages/Admin/AddTransactionForm';
 import CustomerTransactions from './pages/Admin/CustomerTransactions';
