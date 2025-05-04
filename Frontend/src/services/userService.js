@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'http://localhost:5000/api/users';
+const API = 'https://shaheed-wazir-enterprises.onrender.com/api/users';
 
 const getToken = () =>localStorage.getItem('token')
 

@@ -241,11 +241,11 @@ const CustomerTransactions = () => {
         setIsLoading(true);
         
         // Fetch customer details
-        const customerRes = await axios.get(`http://localhost:5000/api/customers/getcustomer/${customerId}`);
+        const customerRes = await axios.get(`https://shaheed-wazir-enterprises.onrender.com/api/customers/getcustomer/${customerId}`);
         setCustomer(customerRes.data.user);
         
         // Fetch transactions
-        const transactionsRes = await axios.get(`http://localhost:5000/api/transactions?customer=${customerId}&sort=-date`);
+        const transactionsRes = await axios.get(`hhttps://shaheed-wazir-enterprises.onrender.com/api/transactions?customer=${customerId}&sort=-date`);
         const transactionsData = await transactionsRes.data
         
         // Calculate running balance

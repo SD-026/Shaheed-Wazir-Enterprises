@@ -29,7 +29,7 @@ const AddCustomerForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/customers/addCustomer',formData)
+      const response = await axios.post('https://shaheed-wazir-enterprises.onrender.com/api/customers/addCustomer',formData)
     console.log(response)
 
       if (response.success) {
