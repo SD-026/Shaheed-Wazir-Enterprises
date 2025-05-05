@@ -916,7 +916,7 @@ const Navbar = ({ children }) => {
                   ))}
                 </div>
 
-                <div className="p-4 mb-4 border-t border-gray-200">
+                <div className="p-4 mb-10 border-t border-gray-200">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
