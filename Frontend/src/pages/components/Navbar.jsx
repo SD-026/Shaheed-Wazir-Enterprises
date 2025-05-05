@@ -845,7 +845,9 @@ const Navbar = ({ children }) => {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
-            <>
+            <div className="h-full">
+          
+            
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -914,7 +916,7 @@ const Navbar = ({ children }) => {
                   ))}
                 </div>
 
-                <div className="p-4 border-t border-gray-200">
+                <div className="p-4 mb-4 border-t border-gray-200">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -949,7 +951,7 @@ const Navbar = ({ children }) => {
   // animate={{ opacity: 1, y: 0 }}
   // exit={{ opacity: 0, y: -10 }}
   // transition={{ duration: 0.2 }}
-  className=" mt-4  w-full bg-white rounded-lg shadow-lg ring-1 ring-gray-200 focus:outline-none z-50"
+  className="   w-full bg-white rounded-lg shadow-lg ring-1 ring-gray-200 focus:outline-none z-50"
 >
   <div className="py-1">
     <a
@@ -990,7 +992,7 @@ const Navbar = ({ children }) => {
 
                       
                 
-                      
+                      {/* <div></div> */}
                       </>
                     
                     
@@ -999,7 +1001,8 @@ const Navbar = ({ children }) => {
                   </motion.div>
                 </div>
               </motion.div>
-            </>
+          
+            </div>
           )}
         </AnimatePresence>
       </nav>

@@ -391,7 +391,7 @@ const SidebarWithNavbar = ({children}) => {
                         else{
                         navigate(`/${item.link}`)}
                       }}
-                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-[#112240]' : ''}`}
+                      className={`flex items-center justify-between p-3 rounded-lg hover:bg-blue-200 transition-colors ${activeDropdown === index ? 'bg-blue-200' : ''}`}
                     >
                       <div className="flex items-center space-x-3">
                         <span>{item.icon}</span>

@@ -97,7 +97,7 @@ const LandingPage = () => {
                 className="block mt-2 font-serif text-5xl sm:text-6xl text-blue-700"
                 whileHover={{ scale: 1.02 }}
               >
-                Textile Enterprises
+                Enterprises
               </motion.span>
             </motion.h1>
           </div>
